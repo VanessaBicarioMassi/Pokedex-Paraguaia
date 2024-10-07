@@ -6,7 +6,7 @@ Uma aplicação frontend em React que consome a API pública do Pokémon para ex
 - Listar Pokémons com nome e imagem.
 - Carregar mais Pokémons através do botão.
 - Pesquisar Pokémons por nome.
-
+- Ao clicar em um pokemon abre outra aba com os status do mesmo.
 ## Tecnologias Utilizadas
 - React	
 - Axios 

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { CardContainer, Card, LoadMoreButton, SearchInput } from '../styles/pokemonsStyle';
 
 class ContainerPokemons extends React.Component {
@@ -34,7 +35,7 @@ class ContainerPokemons extends React.Component {
     };
 
     takePokemons = () => {
-        const  offset  = this.state.offset;
+        const offset = this.state.offset;
         axios.get(`https://pokeapi.co/api/v2/pokemon?limit=21&offset=${offset}`)
             .then((response) => {
                 this.setState({
@@ -48,9 +49,9 @@ class ContainerPokemons extends React.Component {
     };
 
     searchPokemon = () => {
-        const  searchPokemon  = this.state.searchQuery;
+        const searchPokemon = this.state.searchQuery;
         if (searchPokemon === '') {
-            this.takePokemons(); 
+            this.takePokemons();
         } else {
             axios.get(`https://pokeapi.co/api/v2/pokemon/${searchPokemon.toLowerCase()}`)
                 .then(response => {
@@ -58,7 +59,7 @@ class ContainerPokemons extends React.Component {
                         name: response.data.name,
                         sprite: response.data.sprites.front_default,
                     };
-                    this.setState({ sprites: [pokemon] }); 
+                    this.setState({ sprites: [pokemon] });
                 })
                 .catch(err => {
                     console.log(err.message);
@@ -75,7 +76,9 @@ class ContainerPokemons extends React.Component {
         const cardPokemons = this.state.sprites.map((pokemon, index) => (
             <Card key={index}>
                 <img src={pokemon.sprite} alt={pokemon.name} />
-                <p>{pokemon.name}</p>
+                <Link to={`/pokemon/${pokemon.name}`} style={{ textDecoration: 'none', color: 'black' }}>
+                    <p>{pokemon.name}</p>
+                </Link>
             </Card>
         ));
 

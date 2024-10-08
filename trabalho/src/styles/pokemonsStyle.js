@@ -4,7 +4,7 @@ export const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 80px;  
+    margin-top: 30px;  
 `;
 
 export const Card = styled.div`
